@@ -19,7 +19,22 @@
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <f:display bean="course" />
+            <div id="show">
+                <b>${message(code: 'course.name', default: 'Name')}:</b>
+                <g:fieldValue bean="${course}" field="name"/>
+                <br>
+                <b>${message(code: 'course.value', default: 'Value')}:</b>
+                <g:fieldValue bean="${course}" field="value"/>
+                <br>
+                <b>${message(code: 'course.duration', default: 'Duration')}:</b>
+                <g:fieldValue bean="${course}" field="duration"/>
+                <br>
+                <b>${message(code: 'course.description', default: 'Description')}:</b>
+                <g:fieldValue bean="${course}" field="description"/>
+                <br>
+                <b>${message(code: 'course.active', default: 'Active')}:</b>
+                <g:fieldValue bean="${course}" field="description"/>
+            </div>
             <g:form resource="${this.course}" method="DELETE">
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.course}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
