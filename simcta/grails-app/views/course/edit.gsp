@@ -29,7 +29,21 @@
             <g:form resource="${this.course}" method="PUT">
                 <g:hiddenField name="version" value="${this.course?.version}" />
                 <fieldset class="form">
-                    <f:all bean="course"/>
+                    <f:field bean="course" property="name">
+                        <g:fieldValue bean="${course}" field="name" />
+                    </f:field>
+                    <f:field bean="course" property="value">
+                        <g:textField name="value" value="${value}"/>
+                    </f:field>
+                    <f:field bean="course" property="duration">
+                        <g:textField name="duration" value="${value}"/>
+                    </f:field>
+                    <f:field bean="course" property="description">
+                        <g:textField name="description" value="${value}"/>
+                    </f:field>
+                    <f:field bean="course" property="active">
+                        <g:checkBox name="active" value="${value}"/>
+                    </f:field>
                 </fieldset>
                 <fieldset class="buttons">
                     <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />
