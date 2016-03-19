@@ -10,7 +10,14 @@ class CourseController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Course.list(params), model:[courseCount: Course.count()]
+
+        def courseList = Course.createCriteria().list (params) {
+            if ( params.query ) {
+                ilike("name", "%${params.query}%")
+            }
+        }
+ 
+        respond Course.list(params), model:[courseList: courseList, courseCount: Course.count()]
     }
 
     def show(Course course) {
@@ -104,4 +111,27 @@ class CourseController {
             '*'{ render status: NOT_FOUND }
         }
     }
+
+    @Transactional
+    def updateStatus(Course course) {
+
+        boolean status = course.active
+        boolean newStatus = false
+
+        if(status == true){
+            newStatus = false
+        }
+        else{
+            newStatus = true
+        }
+
+        if(course != null){
+            
+            course.active = newStatus
+            course.save(insert: false) 
+            redirect action: "show", id: course.id
+        }
+       
+    }
+
 }

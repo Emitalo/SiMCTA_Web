@@ -33,11 +33,31 @@
                 <g:fieldValue bean="${course}" field="description"/>
                 <br>
                 <b>${message(code: 'course.active', default: 'Active')}:</b>
-                <g:fieldValue bean="${course}" field="description"/>
+                    
+                    <g:if test="${course.active == true}">
+                        Sim
+                    </g:if>
+
+                    <g:else>
+                        Não
+                    </g:else>
             </div>
             <g:form resource="${this.course}" method="DELETE">
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.course}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+                    
+                    <g:link class="edit" action="updateStatus" resource="${this.course}">
+                    
+                    <g:if test="${course.active == false}">
+                        <g:message code="default.button.active.status.label" default="Update status" />
+                    </g:if>
+
+                    <g:else>
+                        <g:message code="default.button.deactive.status.label" default="Update status" />
+                    </g:else>
+                    
+                    </g:link>
+
                     <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                 </fieldset>
             </g:form>
