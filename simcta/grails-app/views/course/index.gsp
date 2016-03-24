@@ -13,27 +13,33 @@
                 <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
             </ul>
         </div>
-        <div id="list-course" class="content scaffold-list" role="main">
-            <h1><g:message code="default.list.label" args="[entityName]" /></h1>
-            <g:if test="${flash.message}">
-                <div class="message" role="status">${flash.message}</div>
-            </g:if>
-            <g:if test="${flash.message}">
-            <div class="message" role="status">${flash.message}</div>
-            </g:if>
-            <fieldset class="form">
-                <g:form action="index" method="GET">
-                    <div class="fieldcontain">
-                        <label for="query">Procurar Curso:</label>
-                        <g:textField name="query" value="${params.query}"/>
-                    </div>
-                </g:form>
-            </fieldset>
-            <f:table collection="${courseList}" />
+            <h1><center><b><g:message code="default.list.label" args="[entityName]" /></h1>
+            <!-- Show courses -->
+            <g:each in="${courseList}">        
 
-            <div class="pagination">
-                <g:paginate total="${courseCount ?: 0}" />
-            </div>
+                    <div class="col-xs-6 col-md-3" align="center">
+                        <div class="thumbnail">
+                        <div class="caption">
+                        <h3><a href="/course/show/${it.id}">${it.name}</a></h3>
+                    <b><h2>Valor:</b> R$ ${it.value}
+                    <br><br>
+                    <g:if test="${it.active == true}">
+                        <span class="label label-success">
+                            <g:message code="course.active.afirmation"/>
+                        </span>
+                    </g:if>
+
+                    <g:else>
+                        <span class="label label-danger">
+                            <g:message code="course.deactive.afirmation"/>
+                        </span>
+                    </g:else>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                            
+            </g:each>
         </div>
     </body>
 </html>

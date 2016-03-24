@@ -9,15 +9,8 @@ class CourseController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-
-        def courseList = Course.createCriteria().list (params) {
-            if ( params.query ) {
-                ilike("name", "%${params.query}%")
-            }
-        }
- 
-        respond Course.list(params), model:[courseList: courseList, courseCount: Course.count()]
+        params.max = Math.min(max ?: 10, 100) 
+        respond Course.list(params)
     }
 
     def show(Course course) {
