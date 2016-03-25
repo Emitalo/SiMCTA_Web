@@ -53,24 +53,24 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Alunos <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Matricular Aluno</a></li>
-                        <li><a href="#">Consultar Aluno</a></li>
+                        <li><a href="/student/create">Matricular Aluno</a></li>
+                        <li><a href="/student">Consultar Aluno</a></li>
                     </ul>
                 </li>
                 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Turmas <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Abrir Turma</a></li>
-                        <li><a href="#">Visualizar Turmas</a></li>
+                        <li><a href="/class/create">Abrir Turma</a></li>
+                        <li><a href="/class">Visualizar Turmas</a></li>
                     </ul>
                 </li>
 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Professores <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Cadastrar Professor</a></li>
-                        <li><a href="#">Visualizar Professores</a></li>
+                        <li><a href="/teacher/create">Cadastrar Professor</a></li>
+                        <li><a href="/teacher">Visualizar Professores</a></li>
                     </ul>
                 </li>
             

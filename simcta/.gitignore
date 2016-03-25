@@ -1,3 +1,5 @@
 /build
 /grails-app/conf/application.yml
 
+.asscache
+.gradle/
