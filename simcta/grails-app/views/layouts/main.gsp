@@ -61,8 +61,8 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Turmas <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/class/create">Abrir Turma</a></li>
-                        <li><a href="/class">Visualizar Turmas</a></li>
+                        <li><a href="/clas/create">Abrir Turma</a></li>
+                        <li><a href="/clas">Visualizar Turmas</a></li>
                     </ul>
                 </li>
 
