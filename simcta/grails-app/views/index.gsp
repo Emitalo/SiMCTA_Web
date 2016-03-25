@@ -39,8 +39,8 @@
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Professores <span class="caret"></span></a>
             <ul class="dropdown-menu">
-                <li><a href="#">Cadastrar Professor</a></li>
-                <li><a href="#">Visualizar Professores</a></li>
+                <li><a href="/teacher/create">Cadastrar Professor</a></li>
+                <li><a href="/teacher">Visualizar Professores</a></li>
             </ul>
         </li>
     </content>
