@@ -6,15 +6,24 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class ClasController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    private static final String CLASS_ALREADY_EXISTS_ERROR = "Esta turma já existe para o curso informado."
+
+    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE", activate: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Clas.list(params), model:[clasCount: Clas.count()]
+
+        // Get the active classes
+        respond Clas.findAllByActive(true, params), model:[clasCount: Clas.count()]
     }
 
     def show(Clas clas) {
         respond clas
+    }
+
+    def showDeactivated(){
+
+        respond Clas.findAllByActive(false)
     }
 
     def create() {
@@ -39,6 +48,13 @@ class ClasController {
 
         clas = generateDependentFields(clas)
 
+        // Checks if after generate the dependent fields, the clas object has no errors
+        if (clas.hasErrors()) {
+            transactionStatus.setRollbackOnly()
+            respond clas.errors, view:'create'
+            return
+        }
+
         clas.save flush:true
 
         request.withFormat {
@@ -53,12 +69,30 @@ class ClasController {
     def generateDependentFields(Clas clas){
 
         clas.endDate = clas.startDate.plus(clas.course.duration*7)
-        clas.classId = generateClassId(clas)
+        
+        def classId = generateClassId(clas)
+
+        def foundClass = Clas.findByClassId(classId)
+
+        // Class already exists, cannot be created
+        if(foundClass != null){
+            clas.errors.rejectValue(
+                "classId",
+                "clas.classid.alreadyExists",
+                null,
+                CLASS_ALREADY_EXISTS_ERROR
+            )
+
+            return clas
+        }
+
+        clas.classId = classId
 
         return clas
     }
 
     def generateClassId(Clas clas){
+
 
         def startDate = clas.startDate
 
@@ -71,7 +105,7 @@ class ClasController {
         
         def courseFirstName = courseName[0].toUpperCase()
 
-        def classId = courseFirstName + "-" + shift + " " + startDate.format("dd/mm/YY")
+        def classId = courseFirstName + "-" + shift + " " + startDate.format("dd/MM/YY")
 
         return classId
     }
@@ -116,16 +150,40 @@ class ClasController {
             return
         }
 
-        clas.delete flush:true
+        clas.active = false
+
+        clas.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'clas.label', default: 'Clas'), clas.id])
+                flash.message = message(code: 'clas.deleted.message', args: [message(code: 'clas.label', default: 'Clas'), clas.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
         }
     }
+
+    @Transactional
+    def activate(Clas clas) {
+
+        if (clas == null) {
+            transactionStatus.setRollbackOnly()
+            notFound()
+            return
+        }
+
+        clas.active = true
+
+        clas.save flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'clas.activated.message', args: [message(code: 'clas.label', default: 'Clas'), clas.id])
+                redirect action:"showDeactivated", method:"GET"
+            }
+            '*'{ render status: NO_CONTENT }
+        }
+    }    
 
     protected void notFound() {
         request.withFormat {
