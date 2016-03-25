@@ -19,6 +19,7 @@ abstract class Person {
     	name blank: false, matches: "[a-zA-Z À-ú_]+"
         cpf editable:false, nullable: false, unique: true, validator:{ Person.validCpf(it)}
         rg nullable: false, matches: "[0-9]+"
+        birthdate nullable: false
         email unique: true, email: true
         address nullable: false
         principalPhone nullable: false

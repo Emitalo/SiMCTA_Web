@@ -25,8 +25,8 @@
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Alunos <span class="caret"></span></a>
             <ul class="dropdown-menu">
-                <li><a href="#">Matricular Aluno</a></li>
-                <li><a href="#">Consultar Aluno</a></li>
+                <li><a href="/student/create">Matricular Aluno</a></li>
+                <li><a href="/student">Consultar Aluno</a></li>
             </ul>
         </li>
         <li class="dropdown">
