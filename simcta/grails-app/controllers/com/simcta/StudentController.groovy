@@ -48,6 +48,13 @@ class StudentController {
         respond new Student(params)
     }
 
+    def payment(Student student){
+
+        def enrollment = Enrollment.findByStudent(student)
+
+        redirect controller: "enrollment", action: "show", id: enrollment.id
+    }
+
     @Transactional
     def save(Student student) {
         if (student == null) {

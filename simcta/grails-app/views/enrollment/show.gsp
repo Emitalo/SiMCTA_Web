@@ -10,8 +10,6 @@
         <div class="nav" role="navigation">
             <ul>
                 <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="list" action="index"><g:message code="enrollment.list.label" args="[entityName]" /></g:link></li>
-                <li><g:link class="create" action="create"><g:message code="enrollment.new.label" args="[entityName]" /></g:link></li>
             </ul>
         </div>
         <div id="show-enrollment" class="content scaffold-show" role="main">
@@ -23,7 +21,6 @@
             <g:form resource="${this.enrollment}" method="DELETE">
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.enrollment}"><g:message code="enrollment.button.edit.label" default="Edit" /></g:link>
-                    <input class="delete" type="submit" value="${message(code: 'enrollment.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'enrollment.button.delete.confirm.message', default: 'Are you sure?')}');" />
                 </fieldset>
             </g:form>
         </div>

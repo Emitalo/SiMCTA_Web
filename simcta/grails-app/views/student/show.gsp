@@ -24,6 +24,8 @@
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.student}"><g:message code="student.button.edit.label" default="Edit" /></g:link>
 
+                    <g:link class="list" action="payment" resource="${this.student}"><g:message code="student.button.payment.label" default="Dados do pagamento" /></g:link>
+
                     <g:if test="${student.active == true}">
                         <input class="delete" type="submit" value="${message(code: 'student.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'student.button.delete.confirm.message', default: 'Tem certeza?')}');" />
                     </g:if>
