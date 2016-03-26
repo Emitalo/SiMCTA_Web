@@ -13,6 +13,22 @@ class CourseController {
         respond Course.list(params)
     }
 
+    def search(){
+        def name = params.name
+        def active = params.active
+
+        def like = "%" + name + "%";
+
+        def courses
+        def view
+
+        courses = Course.findAllByActiveAndNameIlike(true, like)
+        view = "index"
+
+        render view: view, model: [courseList: courses, courseCount: courses.size()]
+
+    }
+
     def show(Course course) {
         respond course
     }
