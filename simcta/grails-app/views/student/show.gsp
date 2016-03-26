@@ -23,7 +23,13 @@
             <g:form resource="${this.student}" method="DELETE">
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.student}"><g:message code="student.button.edit.label" default="Edit" /></g:link>
-                    <input class="delete" type="submit" value="${message(code: 'student.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'student.button.delete.confirm.message', default: 'Are you sure?')}');" />
+
+                    <g:if test="${student.active == true}">
+                        <input class="delete" type="submit" value="${message(code: 'student.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'student.button.delete.confirm.message', default: 'Tem certeza?')}');" />
+                    </g:if>
+                    <g:else>
+                        <input class="delete" type="submit" value="${message(code: 'student.button.activate.label', default: 'Delete')}" onclick="return confirm('${message(code: 'student.button.activate.confirm.message', default: 'Tem certeza?')}');" />
+                    </g:else>
                 </fieldset>
             </g:form>
         </div>

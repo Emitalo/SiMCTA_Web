@@ -10,21 +10,38 @@ class StudentController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Student.list(params), model:[studentCount: Student.count()]
+        respond Student.findAllByActive(true, params), model:[studentCount: Student.count()]
     }
 
     def search(){
         def name = params.name
+        def status = params.status
 
         def like = "%" + name + "%";
 
-        def students = Student.findAllByNameIlike(like)
+        def students
+        def view
 
-        render view: "index", model: [studentList: students, studentCount: students.size()]
+        if(status == "true"){
+
+            students = Student.findAllByActiveAndNameIlike(true, like)
+            view = "index"
+        }else{
+            
+            students = Student.findAllByActiveAndNameIlike(false, like)
+            view = "showDeactivated"
+        }
+
+        render view: view, model: [studentList: students, studentCount: students.size()]
     }
 
     def show(Student student) {
         respond student
+    }
+
+    def showDeactivated(){
+
+        respond Student.findAllByActive(false)
     }
 
     def create() {
@@ -94,11 +111,14 @@ class StudentController {
             return
         }
 
-        student.delete flush:true
+        // If is active, deactivate, if is not, activate
+        student.active = !student.active
+
+        student.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'student.label', default: 'Student'), student.id])
+                flash.message = message(code: 'student.changeStatus.message', args: [message(code: 'student.label', default: 'Student'), student.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
