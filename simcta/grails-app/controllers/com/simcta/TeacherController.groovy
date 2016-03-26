@@ -10,11 +10,16 @@ class TeacherController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Teacher.list(params), model:[teacherCount: Teacher.count()]
+        respond Teacher.findAllByActive(true, params), model:[teacherCount: Teacher.count()]
     }
 
     def show(Teacher teacher) {
         respond teacher
+    }
+
+    def showDeactivated(){
+
+        respond Teacher.findAllByActive(false)
     }
 
     def create() {
