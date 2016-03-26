@@ -46,7 +46,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pacotes <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><g:link controller="packge" action="create">Cadastrar Pacote</g:link></li>
-                        <li><a href="#">Visualizar Pacotes</a></li>
+                        <li><g:link controller="packge" action="index">Visualizar Pacotes</g:link></li>
                     </ul>
                 </li>
 

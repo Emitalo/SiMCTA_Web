@@ -27,7 +27,9 @@
             </g:hasErrors>
             <g:form action="save">
                 <fieldset class="form">
-                    <i>Para adicionar os cursos ao pacote basta selecionar os cursos desejados</i>
+                    <div class="alert alert-info" role="alert">
+                        <i>Para adicionar os cursos ao pacote basta selecionar os cursos desejados</i>
+                    </div>
                     <f:all bean="packge"/>
                 </fieldset>
                 <fieldset class="buttons">

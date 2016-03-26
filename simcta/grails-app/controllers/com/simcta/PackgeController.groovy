@@ -35,6 +35,7 @@ class PackgeController {
             return
         }
 
+        // Set duration based on courses duration
         packge.duration = calculateDuration(packge)
 
         packge.save flush:true
@@ -65,6 +66,9 @@ class PackgeController {
             respond packge.errors, view:'edit'
             return
         }
+
+        // Set duration based on courses duration
+        packge.duration = calculateDuration(packge)
 
         packge.save flush:true
 
@@ -105,6 +109,28 @@ class PackgeController {
             }
             '*'{ render status: NOT_FOUND }
         }
+    }
+    
+    @Transactional
+    def updateStatus(Packge packge) {
+
+        boolean status = packge.active
+        boolean newStatus = false
+
+        if(status == true){
+            newStatus = false
+        }
+        else{
+            newStatus = true
+        }
+
+        if(packge != null){
+            
+            packge.active = newStatus
+            packge.save(insert: false) 
+            redirect action: "show", id: packge.id
+        }
+       
     }
 
     private calculateDuration(Packge packge){
