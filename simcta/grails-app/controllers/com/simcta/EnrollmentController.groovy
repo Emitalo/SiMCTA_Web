@@ -18,7 +18,7 @@ class EnrollmentController {
     }
 
     def create() {
-        respond new Enrollment(params)
+        respond new Enrollment(), model: [student: params.student, studentName: params.studentName]
     }
 
     @Transactional
@@ -34,6 +34,10 @@ class EnrollmentController {
             respond enrollment.errors, view:'create'
             return
         }
+
+        def studentId = params.student
+
+        enrollment.student = Student.get(studentId)
 
         enrollment.save flush:true
 

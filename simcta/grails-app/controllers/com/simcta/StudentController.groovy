@@ -64,13 +64,9 @@ class StudentController {
 
         student.save flush:true
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'student.label', default: 'Student'), student.id])
-                redirect student
-            }
-            '*' { respond student, [status: CREATED] }
-        }
+        flash.message = message(code: 'default.created.message', args: [message(code: 'student.label', default: 'Student'), student.id])
+
+        redirect controller: "enrollment",  action: "create" , params: [student: student.id, studentName: student.name]
     }
 
     def edit(Student student) {

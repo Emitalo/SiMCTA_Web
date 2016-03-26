@@ -12,6 +12,6 @@ class Packge extends ServiceItem{
     }
 
     public String toString(){
-    	return name
+    	return "Pacote - " + name
     }
 }

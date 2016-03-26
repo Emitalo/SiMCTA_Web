@@ -19,6 +19,7 @@ class Enrollment {
 		paymentType nullable: false, inList: ["A vista", "Parcelado"]
 		paymentForm nullable: false, inList: ["Dinheiro", "Cartão", "Cheque"]
 		installments nullable: false, min: 0
+		student nullable: true, display: false, editable: false
 		id display: false
         version display: false
 	}
