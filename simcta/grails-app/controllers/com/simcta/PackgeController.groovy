@@ -13,6 +13,22 @@ class PackgeController {
         respond Packge.list(params), model:[packgeCount: Packge.count()]
     }
 
+    def search(){
+        def name = params.name
+        def active = params.active
+
+        def like = "%" + name + "%";
+
+        def packges
+        def view
+
+        packges = Packge.findAllByActiveAndNameIlike(true, like)
+        view = "index"
+
+        render view: view, model: [packgeList: packges, packgeCount: packges.size()]
+
+    }
+
     def show(Packge packge) {
         respond packge
     }
