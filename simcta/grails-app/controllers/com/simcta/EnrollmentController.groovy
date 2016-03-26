@@ -8,17 +8,12 @@ class EnrollmentController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Enrollment.list(params), model:[enrollmentCount: Enrollment.count()]
-    }
-
     def show(Enrollment enrollment) {
         respond enrollment
     }
 
     def create() {
-        respond new Enrollment(), model: [student: params.student, studentName: params.studentName]
+        respond new Enrollment(params), model: [student: params.student, studentName: params.studentName]
     }
 
     @Transactional
@@ -76,26 +71,6 @@ class EnrollmentController {
                 redirect enrollment
             }
             '*'{ respond enrollment, [status: OK] }
-        }
-    }
-
-    @Transactional
-    def delete(Enrollment enrollment) {
-
-        if (enrollment == null) {
-            transactionStatus.setRollbackOnly()
-            notFound()
-            return
-        }
-
-        enrollment.delete flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'enrollment.label', default: 'Enrollment'), enrollment.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
         }
     }
 

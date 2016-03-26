@@ -14,7 +14,7 @@ class Course extends ServiceItem{
 
     String toString(){
         
-    	return "Curso" + name
+    	return "Curso - " + name
     }
 
 }

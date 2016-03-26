@@ -52,7 +52,14 @@ class StudentController {
 
         def enrollment = Enrollment.findByStudent(student)
 
-        redirect controller: "enrollment", action: "show", id: enrollment.id
+        if(enrollment != null){
+            redirect controller: "enrollment", action: "show", id: enrollment.id
+        }else{
+            
+            flash.message = message(code: 'enrollment.not.created.yet.message')
+
+            redirect controller: "enrollment",  action: "create" , params: [student: student.id, studentName: student.name]
+        }
     }
 
     @Transactional
