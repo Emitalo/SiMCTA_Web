@@ -11,7 +11,7 @@ class Course extends ServiceItem{
     	description blank:true, nullable:true
     	packge nullable:true
     }
-    
+
     String toString(){
     	return this.name
     }

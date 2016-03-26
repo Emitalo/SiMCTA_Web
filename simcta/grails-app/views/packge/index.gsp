@@ -7,6 +7,26 @@
     </head>
     <body>
         <a href="#list-packge" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+
+        <div class="navbar-form navbar-right">
+            <g:form action="search">
+
+                <g:hiddenField id="status" name="status" value="true"/>
+                        <g:textField class="form-control" placeholder="Digite o nome do pacote" name="name"/>
+                            <g:submitButton class="btn btn-primary" name="search" value="Pesquisar"/>
+
+                <div class="col-md-4">
+                    <div class="input-group">
+                    
+                        
+                        <span class="input-group-btn">
+                        </span>
+
+                    </div>
+                </div>
+            </g:form>
+        </div>
+
         <div class="nav" role="navigation">
             <ul>
                 <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
