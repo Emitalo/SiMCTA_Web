@@ -13,6 +13,16 @@ class StudentController {
         respond Student.list(params), model:[studentCount: Student.count()]
     }
 
+    def search(){
+        def name = params.name
+
+        def like = "%" + name + "%";
+
+        def students = Student.findAllByNameIlike(like)
+
+        render view: "index", model: [studentList: students, studentCount: students.size()]
+    }
+
     def show(Student student) {
         respond student
     }
