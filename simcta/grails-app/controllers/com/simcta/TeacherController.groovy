@@ -84,11 +84,14 @@ class TeacherController {
             return
         }
 
-        teacher.delete flush:true
+        // If is active, deactivate, if is not, activate
+        teacher.active = !teacher.active
+
+        teacher.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'teacher.label', default: 'Teacher'), teacher.id])
+                flash.message = message(code: 'teacher.changeStatus.message', args: [message(code: 'teacher.label', default: 'Teacher'), teacher.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
