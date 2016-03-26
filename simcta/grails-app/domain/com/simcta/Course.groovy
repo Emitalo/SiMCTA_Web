@@ -4,14 +4,16 @@ class Course extends ServiceItem{
 
 	String description
 
-	static hasMany = [classes: Clas]
-
+    static hasMany = [classes: Clas, packge: Packge]
+	static belongsTo = Packge
+    
     static constraints = {	
     	description blank:true, nullable:true
+    	packge nullable:true
     }
 
-    public String toString(){
-
+    String toString(){
     	return this.name
     }
+
 }
