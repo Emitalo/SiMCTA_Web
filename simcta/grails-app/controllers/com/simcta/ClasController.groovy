@@ -93,40 +93,19 @@ class ClasController {
             return
         }
 
-        clas.active = false
+        // If is active, deactivate, if is not, activate
+        clas.active = !clas.active
 
         clas.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'clas.deleted.message', args: [message(code: 'clas.label', default: 'Clas'), clas.id])
+                flash.message = message(code: 'clas.changeStatus.message', args: [message(code: 'clas.label', default: 'Clas'), clas.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
         }
-    }
-
-    @Transactional
-    def activate(Clas clas) {
-
-        if (clas == null) {
-            transactionStatus.setRollbackOnly()
-            notFound()
-            return
-        }
-
-        clas.active = true
-
-        clas.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'clas.activated.message', args: [message(code: 'clas.label', default: 'Clas'), clas.id])
-                redirect action:"showDeactivated", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
-    }    
+    } 
 
     protected void notFound() {
         request.withFormat {
