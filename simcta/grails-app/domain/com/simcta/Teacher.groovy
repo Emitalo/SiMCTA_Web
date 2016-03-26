@@ -9,4 +9,9 @@ class Teacher extends Person{
     static constraints = {
     	qualification nullable: false
     }
+
+    public String toString(){
+
+    	return name;
+    }
 }
