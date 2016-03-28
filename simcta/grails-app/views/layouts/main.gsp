@@ -13,29 +13,77 @@
     <g:layoutHead/>
 </head>
 <body>
-
-    <div class="navbar navbar-default navbar-static-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/#">
-                    <i class="fa grails-icon">
-                        <asset:image src="logo.png"/>
-                    </i> SiMCTA
-                </a>
-            </div>
-            <div class="navbar-collapse collapse" aria-expanded="false" style="height: 0.8px;">
-                <ul class="nav navbar-nav navbar-right">
-                    <g:pageProperty name="page.nav" />
-                </ul>
-            </div>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/#">
+                <i class="fa grails-icon">
+                <asset:image src="logo.png"/>
+                </i> SiMCTA
+            </a>
         </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cursos <span class="caret"></span></a>
+                
+                    <ul class="dropdown-menu">
+                        <li><g:link controller="course" action="create">Cadastrar Curso</g:link></li>
+                        <li><g:link controller="course" action="index">Visualizar Cursos</g:link></li>
+                    </ul>
+                
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pacotes <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><g:link controller="packge" action="create">Cadastrar Pacote</g:link></li>
+                        <li><g:link controller="packge" action="index">Visualizar Pacotes</g:link></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Alunos <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/student/create">Matricular Aluno</a></li>
+                        <li><a href="/student">Consultar Aluno</a></li>
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Turmas <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/clas/create">Abrir Turma</a></li>
+                        <li><a href="/clas">Visualizar Turmas</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Professores <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/teacher/create">Cadastrar Professor</a></li>
+                        <li><a href="/teacher">Visualizar Professores</a></li>
+                    </ul>
+                </li>
+            
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+            
+    <div class="navbar-collapse collapse" aria-expanded="false" style="height: 0.8px;">
+        <ul class="nav navbar-nav navbar-right">
+            <g:pageProperty name="page.nav" />
+        </ul>
     </div>
+</nav> 
 
     <g:layoutBody/>
 

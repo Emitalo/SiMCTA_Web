@@ -7,43 +7,6 @@
     <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
 </head>
 <body>
-    <content tag="nav">
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cursos <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="#">Cadastrar Curso</a></li>
-                <li><a href="#">Visualizar Cursos</a></li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pacotes <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="#">Cadastrar Pacote</a></li>
-                <li><a href="#">Visualizar Pacotes</a></li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Alunos <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="#">Matricular Aluno</a></li>
-                <li><a href="#">Consultar Aluno</a></li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Turmas <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="#">Abrir Turma</a></li>
-                <li><a href="#">Visualizar Turmas</a></li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Professores <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="#">Cadastrar Professor</a></li>
-                <li><a href="#">Visualizar Professores</a></li>
-            </ul>
-        </li>
-    </content>
 
     <div class="svg" role="presentation">
         <div class="grails-logo-container">
