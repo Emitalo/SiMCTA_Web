@@ -8,11 +8,11 @@ class BootStrap {
 
     def init = { servletContext ->
     	
-	   	def directorRole = new Role('ROLE_DIRECTOR').save()
-        
-        def me = new User('admin', 'admin').save()
+        def secretaryRole = new Role('ROLE_SECRETARY').save()
 
-        UserRole.create me, directorRole
+        def secretary = new User('secretaria', 'secretary').save()
+
+        UserRole.create secretary, secretaryRole
 
         UserRole.withSession {
             it.flush()
