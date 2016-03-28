@@ -10,7 +10,8 @@ class Clas {
 
 	Teacher teacher
 
-	static belongsTo = [course: Course, studentClass: StudentClass]
+	static belongsTo = [course: Course]
+    static hasMany = [studentClass: StudentClass]
 
     static constraints = {
     	classId nullable: false, unique: true, display: false, editable: false

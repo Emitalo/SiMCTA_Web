@@ -5,7 +5,7 @@ import  com.simcta.Enrollment
 
 class Student extends Person{
 
-	static belongsTo = [studentClass: StudentClass]
+	static hasMany = [studentClass: StudentClass]
 	
 	static constraints = {
 		studentClass nullable:true, display:false

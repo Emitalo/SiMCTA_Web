@@ -28,6 +28,7 @@
                     
                     <g:if test="${clas.active == true}">
                         <input class="delete" type="submit" value="${message(code: 'clas.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'clas.button.delete.confirm.message', default: 'Tem certeza?')}');" />
+                           <g:link class="create" action="enrollStudents" resource="${this.clas}"><g:message code="clas.button.enrollstudent.label" default="Enroll Students" /></g:link>
                     </g:if>
                     <g:else>
                         <input class="delete" type="submit" value="${message(code: 'clas.button.activate.label', default: 'Ativar')}" onclick="return confirm('${message(code: 'clas.button.activate.confirm.message', default: 'Tem certeza?')}');" />
