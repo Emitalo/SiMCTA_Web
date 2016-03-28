@@ -33,6 +33,8 @@
                         <input class="delete" type="submit" value="${message(code: 'clas.button.activate.label', default: 'Ativar')}" onclick="return confirm('${message(code: 'clas.button.activate.confirm.message', default: 'Tem certeza?')}');" />
                 
                     </g:else>
+
+                    <g:link class="btn btn-default" action="enrollStudents" resource="${this.clas}"><g:message code="clas.button.enroll.label" default="Edit" /></g:link>
                 </fieldset>
                 </g:form>
         </div>

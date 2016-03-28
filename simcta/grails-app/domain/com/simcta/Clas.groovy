@@ -10,14 +10,16 @@ class Clas {
 
 	Teacher teacher
 
-	static belongsTo = [course: Course, studentClass: StudentClass]
+	static belongsTo = [course: Course]
+
+    static hasMany = [studentClasses: StudentClass]
 
     static constraints = {
     	classId nullable: false, unique: true, display: false, editable: false
     	shift nullable: false, inList: ["Matutino", "Vespertino", "Noturno"]
     	startDate nullable: false
     	endDate nullable: false, display:false, editable: false
-        studentClass nullable:true, display:false
+        studentClasses nullable:true, display:false
     }
 
     // Generates the classId and the endDate

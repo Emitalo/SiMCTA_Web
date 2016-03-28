@@ -22,6 +22,17 @@ class StudentClassController {
     }
 
     @Transactional
+    def enroll(){
+
+        def studentId = params.studentId
+        def classId = params.clasId
+
+        def studentClass = new StudentClass(student: Student.get(studentId), clas: Clas.get(classId))
+
+        this.save(studentClass)
+    }
+
+    @Transactional
     def save(StudentClass studentClass) {
         if (studentClass == null) {
             transactionStatus.setRollbackOnly()
@@ -35,15 +46,11 @@ class StudentClassController {
             return
         }
 
-        studentClass.save flush:true
+        studentClass.save flush: true
+        
+        flash.message = message(code: "Aluno matriculado na turma com sucesso!")
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'studentClass.label', default: 'StudentClass'), studentClass.id])
-                redirect studentClass
-            }
-            '*' { respond studentClass, [status: CREATED] }
-        }
+        redirect controller: "clas", action: "enrollStudents", id: studentClass.clas.id
     }
 
     def edit(StudentClass studentClass) {

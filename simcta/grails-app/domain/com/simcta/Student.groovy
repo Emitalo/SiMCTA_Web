@@ -2,13 +2,14 @@ package com.simcta
 
 import  com.simcta.Person
 import  com.simcta.Enrollment
+import  java.util.Set
 
 class Student extends Person{
 
-	static belongsTo = [studentClass: StudentClass]
+	static hasMany = [studentClasses: StudentClass]
 	
 	static constraints = {
-		studentClass nullable:true, display:false
+		studentClasses nullable:true, display: false
 	}
 
 	public String toString(){

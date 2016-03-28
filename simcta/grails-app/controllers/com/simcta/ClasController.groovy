@@ -107,6 +107,87 @@ class ClasController {
         }
     } 
 
+    def enrollStudents(Clas clas){
+
+        def courseEnrollments = clas.course.enrollments
+
+        def students = []
+        for(enrollment in courseEnrollments){
+            // students.add(enrollment.student)
+            def student = enrollment.student
+
+            def studentClasses = StudentClass.findByStudent(student)
+
+            // Student isnt enrolled to any classes
+            if(studentClasses == null){
+                students.add(student)
+            }else{
+                def isEnrolled = true
+                for(studentClass in studentClasses){
+
+                    // Student is already enrolled in this class
+                    if(studentClass.clas.id == clas.id){
+                        isEnrolled = true
+                        break;
+                    }else{
+                        isEnrolled = false
+                    }
+                }
+
+                // If is not enrolled in the class, add it to appear on the page
+                if(!isEnrolled){
+                    students.add(student)
+                }
+            }
+        }
+
+        // Get all students who hired a package with clas course
+        def allEnrollments = Enrollment.list()
+        for(enrollment in allEnrollments){
+
+            for(item in enrollment.serviceItens){
+
+                if(item.getClass() == new Packge().getClass()){
+
+                    for(course in item.courses){
+                        
+                        if(course.id == clas.course.id){
+
+                            def student = enrollment.student
+
+                            def studentClasses = StudentClass.findByStudent(student)
+
+                            // Student isnt enrolled to any classes
+                            if(studentClasses == null){
+                                students.add(student)
+                            }else{
+                                def isEnrolled = true
+                                for(studentClass in studentClasses){
+
+                                    // Student is already enrolled in this class
+                                    if(studentClass.clas.id == clas.id){
+                                        isEnrolled = true
+                                        break;
+                                    }else{
+                                        isEnrolled = false
+                                    }
+                                }
+
+                                // If is not enrolled in the class, add it to appear on the page
+                                if(!isEnrolled){
+                                    students.add(student)
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+        
+        render view: "enrollStudents", model: [studentList: students, clas: clas, course: clas.course]
+    }
+
     protected void notFound() {
         request.withFormat {
             form multipartForm {
