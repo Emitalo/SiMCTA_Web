@@ -39,6 +39,14 @@ class StudentClassController {
         
         def studentClass = StudentClass.findByStudentAndClas(Student.get(params.student), Clas.get(params.clas))
 
+        if(params.grade.empty){
+            params.grade = "0"
+        }
+
+        if(params.absence.empty){
+            params.absence = "0"
+        }
+
         studentClass.grade = Float.parseFloat(params.grade)
         studentClass.absence = Integer.parseInt(params.absence)
 
