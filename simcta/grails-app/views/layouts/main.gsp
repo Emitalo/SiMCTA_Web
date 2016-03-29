@@ -65,7 +65,7 @@
                         <li><a href="/clas">Visualizar Turmas</a></li>
                     </ul>
                 </li>
-
+                
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Professores <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -73,7 +73,12 @@
                         <li><a href="/teacher">Visualizar Professores</a></li>
                     </ul>
                 </li>
-            
+                <li>
+                    <p></p>
+                    <g:form controller="logout">                        
+                        <g:submitButton name="logout" value="Sair" class="btn btn-danger"/>
+                    </g:form>
+                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
