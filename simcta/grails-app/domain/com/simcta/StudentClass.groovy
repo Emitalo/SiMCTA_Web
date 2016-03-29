@@ -2,6 +2,12 @@ package com.simcta
 
 class StudentClass {
 
+	private static final String APPROVED_SITUATION = "Aprovado"
+	private static final String REPPROVED_SITUATION = "Reprovado"
+	private static final Integer MIN_GRADE = 5
+	private static final Integer ACCEPTABLE_ABSCENCE_PERCENT = 25
+
+
 	Student student
 	Clas clas
 

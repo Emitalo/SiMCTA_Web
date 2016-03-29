@@ -34,7 +34,9 @@
                 
                     </g:else>
 
-                    <g:link class="btn btn-default" action="enrollStudents" resource="${this.clas}"><g:message code="clas.button.enroll.label" default="Edit" /></g:link>
+                    <g:link class="btn btn-default" action="enrollStudents" resource="${this.clas}"><g:message code="clas.button.enroll.label" default="Matricular alunos" /></g:link>
+
+                    <g:link class="btn btn-default" action="closeClass" resource="${this.clas}"><g:message code="clas.button.close.label" default="Fechar turma" /></g:link>
                 </fieldset>
                 </g:form>
         </div>

@@ -188,6 +188,21 @@ class ClasController {
         render view: "enrollStudents", model: [studentList: students, clas: clas, course: clas.course]
     }
 
+    def closeClass(Clas clas){
+
+        def studentClasses = StudentClass.findAllByClas(clas)
+
+        def studentData = [:]
+        def students = []
+        for(studentClass in studentClasses){
+
+            students.add(studentClass.student)
+            studentData[studentClass.student.id] = studentClass
+        }
+
+        render view: "closeClass", model: [studentList: students, clas: clas, studentData: studentData]
+    }
+
     protected void notFound() {
         request.withFormat {
             form multipartForm {
