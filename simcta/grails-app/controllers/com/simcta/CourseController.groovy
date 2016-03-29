@@ -10,7 +10,8 @@ class CourseController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100) 
-        respond Course.list(params)
+
+        respond Course.findAllByActive(true, params), model:[courseCount: Course.count()]
     }
 
     def search(){
@@ -27,6 +28,11 @@ class CourseController {
 
         render view: view, model: [courseList: courses, courseCount: courses.size()]
 
+    }
+
+    def showDeactivated(){
+
+        respond Course.findAllByActive(false)
     }
 
     def show(Course course) {
