@@ -95,17 +95,36 @@ class ClasController {
             return
         }
 
-        // If is active, deactivate, if is not, activate
-        clas.active = !clas.active
+        def classStudents = StudentClass.findAllByClas(clas)
 
-        clas.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'clas.changeStatus.message', args: [message(code: 'clas.label', default: 'Clas'), clas.id])
-                redirect action:"index", method:"GET"
+        def allDataAssigned = false
+        for(student in classStudents){
+            if(student.situation == null || student.situation.empty){
+                allDataAssigned = false
+                break
+            }else{
+                allDataAssigned = true
             }
-            '*'{ render status: NO_CONTENT }
+        }
+
+        if(allDataAssigned){
+
+            // If is active, deactivate, if is not, activate
+            clas.active = !clas.active
+
+            clas.save flush:true
+
+            request.withFormat {
+                form multipartForm {
+                    flash.message = message(code: 'clas.changeStatus.message', args: [message(code: 'clas.label', default: 'Clas'), clas.id])
+                    redirect action:"index", method:"GET"
+                }
+                '*'{ render status: NO_CONTENT }
+            }
+        }else{
+            
+            flash.message = message(code: "Para fechar a turma todas as notas e faltas devem estar lançadas.")
+            redirect action: "closeClass", id: clas.id
         }
     } 
 
