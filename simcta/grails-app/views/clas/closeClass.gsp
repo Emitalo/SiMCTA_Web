@@ -45,21 +45,22 @@
                                 <g:hiddenField name="clas" value="${clas.id}" />
                                 
                                 <td>
-                                    <label for="grade">Nota</label>
                                     <g:field name="grade" type="number" min="0" max="10" step="0.1" value="${studentData[it.id].grade}" class="form-control"/>
                                 </td>
 
                                 <td>
-                                    <label for="abscence">Faltas</label>
-                                    <g:field name="absence" type="number" min="0" step="1" value="${studentData[it.id].absence}" class="form-control"/>
+                                    <g:field name="absence" type="number" min="0" max="${clas.course.duration*7}" step="1" value="${studentData[it.id].absence}" class="form-control"/>
                                 </td>
                                 
                                 <td>
                                     <g:if test="${studentData[it.id].situation == studentData[it.id].APPROVED_SITUATION}">
                                         <span class="label label-success">${studentData[it.id].APPROVED_SITUATION}</span>
                                     </g:if>
-                                    <g:else>
+                                    <g:elseif test="${studentData[it.id].situation == studentData[it.id].REPPROVED_SITUATION}">
                                         <span class="label label-danger">${studentData[it.id].REPPROVED_SITUATION}</span>
+                                    </g:elseif>
+                                    <g:else>
+                                        <span class="label label-default">Notas e faltas não lançadas ainda</span>
                                     </g:else>
                                 </td>
 
