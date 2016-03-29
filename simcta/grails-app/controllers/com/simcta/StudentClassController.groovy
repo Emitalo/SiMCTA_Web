@@ -42,7 +42,7 @@ class StudentClassController {
 
         if (studentClass.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond studentClass.errors, view:'create'
+            respond studentClass.errors, view: 'enrollStudents', controller: "clas"
             return
         }
 

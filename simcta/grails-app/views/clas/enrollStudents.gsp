@@ -11,9 +11,6 @@
             <div class="nav" role="navigation">
                 <ul>
                     <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                    <li><g:link class="create" action="create"><g:message code="student.new.label" args="[entityName]" /></g:link></li>
-
-                    <li><g:link class="create" action="showDeactivated"><g:message code="student.list.deactivated.label" args="[entityName]" /></g:link></li>
                 </ul>
             </div>
         </div>
@@ -26,7 +23,7 @@
                     <div class="message" role="status">${flash.message}</div>
                 </g:if>
 
-                <g:each in="${studentList}">        
+                <g:each in="${studentList}">
 
                     <div class="col-xs-6 col-md-3" align="center">
                         <div class="thumbnail">
@@ -40,7 +37,7 @@
                                 <g:hiddenField id="clasId" name="clasId" value="${clas.id}"/>
                                 <g:hiddenField id="studentId" name="studentId" value="${it.id}"/>
 
-                                <input class="btn btn-primary" type="submit" value="Matricular" />
+                                <input class="btn btn-primary" type="submit" value="Matricular em ${clas.classId}" />
                             </g:form>
                         </div>
                         </div>

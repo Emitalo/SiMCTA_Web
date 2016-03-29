@@ -19,7 +19,7 @@ class Clas {
     	shift nullable: false, inList: ["Matutino", "Vespertino", "Noturno"]
     	startDate nullable: false
     	endDate nullable: false, display:false, editable: false
-        studentClasses nullable:true, display:false
+        studentClasses nullable:true, display: false
     }
 
     // Generates the classId and the endDate

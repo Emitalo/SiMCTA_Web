@@ -113,19 +113,19 @@ class ClasController {
 
         def students = []
         for(enrollment in courseEnrollments){
-            // students.add(enrollment.student)
+
             def student = enrollment.student
 
-            def studentClasses = StudentClass.findByStudent(student)
-
+            def studentClasses = StudentClass.findAllByStudent(student)
+            
             // Student isnt enrolled to any classes
-            if(studentClasses == null){
+            if(studentClasses == null || studentClasses.empty){
                 students.add(student)
             }else{
                 def isEnrolled = true
                 for(studentClass in studentClasses){
 
-                    // Student is already enrolled in this class
+                    // Student is already enrolled in this classes
                     if(studentClass.clas.id == clas.id){
                         isEnrolled = true
                         break;
@@ -155,10 +155,10 @@ class ClasController {
 
                             def student = enrollment.student
 
-                            def studentClasses = StudentClass.findByStudent(student)
+                            def studentClasses = StudentClass.findAllByStudent(student)
 
                             // Student isnt enrolled to any classes
-                            if(studentClasses == null){
+                            if(studentClasses == null || studentClasses.empty){
                                 students.add(student)
                             }else{
                                 def isEnrolled = true
