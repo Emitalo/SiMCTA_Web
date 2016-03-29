@@ -12,7 +12,7 @@ class PackgeController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Packge.list(params), model:[packgeCount: Packge.count()]
+        respond Packge.findAllByActive(true, params), model:[packgeCount: Packge.count()]
     }
 
     def search(){
@@ -33,6 +33,11 @@ class PackgeController {
 
     def show(Packge packge) {
         respond packge
+    }
+    
+    def showDeactivated(){
+
+        respond Packge.findAllByActive(false)
     }
 
     def create() {
