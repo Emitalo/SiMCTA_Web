@@ -71,6 +71,9 @@
 
                     </g:each>
                 </table>
+                <g:form resource="${this.clas}" action="delete" method="DELETE">
+                    <input class="btn btn-danger" type="submit" value="${message(code: 'clas.button.close.label', default: 'Close Class')}" onclick="return confirm('${message(code: 'clas.button.delete.confirm.message', default: 'Tem certeza?')}');" />
+                </g:form>
                 </div>
 
             </div>

@@ -22,23 +22,18 @@
             
             <f:display bean="clas" />
 
-                <g:form resource="${this.clas}" action="delete" method="DELETE">
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.clas}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
                     
-                    <g:if test="${clas.active == true}">
-                        <input class="delete" type="submit" value="${message(code: 'clas.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'clas.button.delete.confirm.message', default: 'Tem certeza?')}');" />
-                    </g:if>
-                    <g:else>
-                        <input class="delete" type="submit" value="${message(code: 'clas.button.activate.label', default: 'Ativar')}" onclick="return confirm('${message(code: 'clas.button.activate.confirm.message', default: 'Tem certeza?')}');" />
-                
-                    </g:else>
 
                     <g:link class="btn btn-default" action="enrollStudents" resource="${this.clas}"><g:message code="clas.button.enroll.label" default="Matricular alunos" /></g:link>
 
-                    <g:link class="btn btn-default" action="closeClass" resource="${this.clas}"><g:message code="clas.button.close.label" default="Fechar turma" /></g:link>
+                    <g:if test="${clas.active == true}">
+                        <g:link class="btn btn-default" action="closeClass" resource="${this.clas}"><g:message code="clas.button.close.label" default="Fechar turma" /></g:link>
+                    </g:if>
+                       
                 </fieldset>
-                </g:form>
+                
         </div>
     </body>
 </html>
