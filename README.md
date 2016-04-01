@@ -45,6 +45,6 @@ Sistema de Matrícula do Centro de Treinamento Automotivo (CTA)
 
 		grails war
 	
-* Faça o deploy da aplicação no servidor desejado.
+* Pegue o arquivo .war na pasta /build/libs e faça o deploy da aplicação no servidor desejado.
 
 	
