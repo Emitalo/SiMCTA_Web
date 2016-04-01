@@ -8,7 +8,7 @@ Sistema de Matrícula do Centro de Treinamento Automotivo (CTA)
 
 * _MySQL:_ 5.5
 
-##### Instalação da aplicação
+##### Execução da aplicação
 
 * Criar um banco de dados para a aplicação 
 
