@@ -41,7 +41,8 @@ Sistema de Matrícula do Centro de Treinamento Automotivo (CTA)
 	
 		grails run-app
 
-Execute:
+* Execute:
+
 		grails war
 	
 * Faça o deploy da aplicação no servidor desejado.
