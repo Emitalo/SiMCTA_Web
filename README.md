@@ -8,7 +8,7 @@ Sistema de Matrícula do Centro de Treinamento Automotivo (CTA)
 
 * _MySQL:_ 5.5
 
-##### Execução da aplicação
+##### Execução da aplicação (local)
 
 * Criar um banco de dados para a aplicação 
 
@@ -35,3 +35,15 @@ Sistema de Matrícula do Centro de Treinamento Automotivo (CTA)
 		grails run-app
 
 
+##### Deploy da aplicação
+
+* Execute os mesmos passos anteriores, mas ao invés de:
+	
+		grails run-app
+
+Execute:
+		grails war
+	
+* Faça o deploy da aplicação no servidor desejado.
+
+	
